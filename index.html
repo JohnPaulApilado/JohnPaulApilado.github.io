@@ -3,128 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Paul A. Apilado | Portfolio</title>
+    <title>My Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer></script>
 </head>
 <body>
 
-<header>
-    <nav class="navbar">
-        <h2>JP<span>.</span></h2>
-        <button id="menu-toggle" aria-label="Toggle navigation">☰</button>
-        <div id="nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
-</header>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">JD</div>
+            <ul class="nav-links">
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<main>
-    <!-- HOME -->
+    <!-- Home Section -->
     <section id="home" class="hero">
-        <div>
-            <p class="eyebrow">HELLO, WELCOME TO MY PORTFOLIO</p>
-            <h1>John Paul A. <span>Apilado</span></h1>
-            <h2>Aspiring Web Developer</h2>
-            <p>I am a student learning programming and web development.
-            I enjoy creating websites and learning new technologies.</p>
-            <a class="button" href="#projects">View My Projects</a>
-            <a class="button outline" href="#contact">Contact Me</a>
+        <div class="hero-content">
+            <h1>John Doe</h1>
+            <p class="tagline">Aspiring Web Developer & Tech Enthusiast</p>
+            <p class="intro">Welcome to my professional portfolio. I build clean, efficient, and user-friendly web applications.</p>
+            <img src="https://via.placeholder.com/150" alt="Profile Photo" class="profile-photo">
+            <div class="cta-buttons">
+                <a href="#projects" class="btn">View My Projects</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
         </div>
-        <div class="profile">JP</div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- About Section -->
     <section id="about" class="section">
         <h2>About Me</h2>
-        <p>I am a student interested in technology, programming, and website design.
-        My goal is to become a skilled web developer and create useful applications.</p>
-
-        <div class="card">
-            <p><strong>Education:</strong> NUEVA VIZCAYA STATE UNIVERSITY BAMBANG CAMPUS</p>
-            <p><strong>Career Goal:</strong> Become a professional developer.</p>
-            <p><strong>Interests:</strong> Coding, technology, gaming, and design.</p>
+        <div class="about-container">
+            <p class="bio">Hello! I am a passionate developer dedicated to continuous learning and building innovative digital solutions.</p>
+            <div class="about-details">
+                <div class="detail-card">
+                    <h3>Education</h3>
+                    <p><strong>University of Technology</strong></p>
+                    <p>B.S. in Computer Science (Expected: 2027)</p>
+                </div>
+                <div class="detail-card">
+                    <h3>Career Goals</h3>
+                    <p>To become a full-stack software engineer working on impactful open-source and enterprise projects.</p>
+                </div>
+                <div class="detail-card">
+                    <h3>Interests</h3>
+                    <p>UI/UX Design, Open Source Contributing, Artificial Intelligence, and Mobile App Development.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- Skills Section -->
     <section id="skills" class="section">
-        <h2>My Skills</h2>
-        <div class="grid">
-            <div class="card">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
                 <h3>Technical Skills</h3>
-                <p>Website development and debugging</p>
+                <ul>
+                    <li>Web Development</li>
+                    <li>Responsive Design</li>
+                    <li>REST APIs</li>
+                </ul>
             </div>
-            <div class="card">
+            <div class="skill-category">
                 <h3>Programming Languages</h3>
-                <p>HTML, CSS, JavaScript, Java</p>
+                <ul>
+                    <li>HTML5 / CSS3</li>
+                    <li>JavaScript (ES6+)</li>
+                    <li>Python</li>
+                </ul>
             </div>
-            <div class="card">
-                <h3>Tools and Technologies</h3>
-                <p>GitHub, MySQL, VS Code</p>
+            <div class="skill-category">
+                <h3>Tools & Technologies</h3>
+                <ul>
+                    <li>Git & GitHub</li>
+                    <li>VS Code</li>
+                    <li>Node.js</li>
+                </ul>
             </div>
-            <div class="card">
+            <div class="skill-category">
                 <h3>Soft Skills</h3>
-                <p>Teamwork, communication, and problem-solving</p>
+                <ul>
+                    <li>Problem Solving</li>
+                    <li>Team Collaboration</li>
+                    <li>Time Management</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- Projects Section -->
     <section id="projects" class="section">
-        <h2>My Projects</h2>
-        <p>My projects are loaded dynamically from a JSON file.</p>
-
-        <label for="technology-filter">Filter by technology:</label>
-        <select id="technology-filter">
-            <option value="all">All Technologies</option>
-        </select>
-
-        <div id="project-list" class="grid">
-            <p>Loading projects...</p>
+        <h2>Projects</h2>
+        
+        <h3>Featured Projects</h3>
+        <div id="projects-container" class="projects-grid">
+            <p id="projects-loading">Loading projects...</p>
         </div>
 
-        <h2>Latest GitHub Repositories</h2>
-        <div id="repo-list" class="grid">
-            <p>Loading repositories...</p>
+        <h3 class="github-heading">Latest GitHub Repositories</h3>
+        <div id="github-repos-container" class="github-grid">
+            <p id="github-loading">Loading GitHub repositories...</p>
         </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- Contact Section -->
     <section id="contact" class="section">
-        <h2>Contact Me</h2>
-        <p>Email: jpapilado1@gmail.com</p>
-        <p>GitHub: <a href="https://github.com/" target="_blank" rel="noopener">My GitHub</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/" target="_blank" rel="noopener">My LinkedIn</a></p>
+        <h2>Contact</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p><strong>Email:</strong> john.doe@example.com</p>
+                <p><strong>GitHub:</strong> <a href="https://github.com" target="_blank">github.com/username</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://linkedin.com" target="_blank">linkedin.com/in/username</a></p>
+            </div>
 
-        <form id="contact-form" class="card">
-            <label for="name">Name</label>
-            <input type="text" id="name" required placeholder="Enter your name">
-
-            <label for="email">Email</label>
-            <input type="email" id="email" required placeholder="Enter your email">
-
-            <label for="message">Message</label>
-            <textarea id="message" required placeholder="Write your message"></textarea>
-
-            <button class="button" type="submit">Send Message</button>
-            <p id="form-status" role="status"></p>
-        </form>
+            <form id="contact-form" class="contact-form">
+                <h3>Send a Message</h3>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+                <p id="form-feedback" class="feedback-msg"></p>
+            </form>
+        </div>
     </section>
-</main>
 
-<footer>
-    <p>© <span id="year"></span> John Paul A. Apilado</p>
-    <a href="#home">Back to Top ↑</a>
-</footer>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 John Doe. All rights reserved.</p>
+    </footer>
 
-<button id="back-to-top" aria-label="Back to top">↑</button>
+    <!-- Back to Top Button Feature -->
+    <button id="backToTopBtn" title="Go to top">↑ Top</button>
 
+    <script src="js/script.js"></script>
 </body>
 </html>
-```
-              
