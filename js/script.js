@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadProjects();
 
     // 2. Load GitHub Repositories (Replace 'octocat' with your exact GitHub username)
-    loadGitHubRepos("octocat");
+    loadGitHubRepos("JohnPaulApilado");
 
     // 3. Contact Form Validation & Submission Handling
     setupContactForm();
