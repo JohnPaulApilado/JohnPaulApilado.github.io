@@ -32,7 +32,6 @@ async function loadProjects() {
                     <p>${project.description}</p>
                     <p><strong>Role:</strong> ${project.role}</p>
                 </div>
-                <a href="${project.link}" target="_blank" class="btn" style="margin-top: 1rem; text-align: center;">View Project</a>
             `;
             container.appendChild(card);
         });
