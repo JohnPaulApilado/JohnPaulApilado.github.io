@@ -1,26 +1,26 @@
 [
-    {
-        "title": "Personal Portfolio Website",
-        "description": "A responsive website that introduces me and displays my skills.",
-        "technologies": ["HTML", "CSS", "JavaScript"],
-        "role": "Designed and developed the website.",
-        "screenshot": "Portfolio website screenshot",
-        "link": "https://github.com/yourusername/portfolio"
-    },
-    {
-        "title": "Student Grade Calculator",
-        "description": "A calculator that helps students compute their average grades.",
-        "technologies": ["HTML", "CSS", "JavaScript"],
-        "role": "Created the interface and calculation logic.",
-        "screenshot": "Grade calculator screenshot",
-        "link": "https://github.com/yourusername/grade-calculator"
-    },
-    {
-        "title": "Bookstore Database",
-        "description": "A database for books, customers, orders, and staff.",
-        "technologies": ["SQL", "MySQL"],
-        "role": "Designed database tables and relationships.",
-        "screenshot": "Bookstore database screenshot",
-        "link": "https://github.com/yourusername/bookstore-database"
-    }
+  {
+    "title": "E-Commerce Web App",
+    "description": "A fully responsive online store featuring product catalog, shopping cart, and checkout simulation.",
+    "technologies": "HTML, CSS, JavaScript",
+    "role": "Lead Frontend Developer",
+    "screenshot": "project1.png",
+    "link": "https://github.com/username/ecommerce-app"
+  },
+  {
+    "title": "Task Manager Pro",
+    "description": "A productivity tool to organize daily tasks with local storage persistence and priority filtering.",
+    "technologies": "HTML, JavaScript, Tailwind CSS",
+    "role": "Sole Developer",
+    "screenshot": "project2.png",
+    "link": "https://github.com/username/task-manager"
+  },
+  {
+    "title": "Weather Dashboard",
+    "description": "Real-time weather application pulling forecasts and live atmospheric data from a public REST API.",
+    "technologies": "JavaScript, OpenWeather API, CSS",
+    "role": "Full Stack Developer",
+    "screenshot": "project3.png",
+    "link": "https://github.com/username/weather-dashboard"
+  }
 ]
