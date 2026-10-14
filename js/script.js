@@ -1,6 +1,6 @@
 ```javascript
 // Replace with your actual GitHub username.
-const GITHUB_USERNAME = "yourusername";
+const GITHUB_USERNAME = "JohnPaulApilado";
 
 const projectList = document.getElementById("project-list");
 const filter = document.getElementById("technology-filter");
