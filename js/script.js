@@ -41,39 +41,6 @@ async function loadProjects() {
     }
 }
 
-// Fetch Latest GitHub Repositories via REST API
-async function loadGitHubRepos(username) {
-    const container = document.getElementById("github-repos-container");
-    try {
-        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`);
-        if (!response.ok) throw new Error("GitHub data unavailable.");
-
-        const repos = await response.json();
-        container.innerHTML = "";
-
-        if (repos.length === 0) {
-            container.innerHTML = `<p>No public repositories found.</p>`;
-            return;
-        }
-
-        repos.forEach(repo => {
-            const card = document.createElement("div");
-            card.className = "github-card";
-            card.innerHTML = `
-                <div>
-                    <h4><a href="${repo.html_url}" target="_blank" style="color: var(--accent-color); text-decoration: none;">${repo.name}</a></h4>
-                    <p>${repo.description ? repo.description : "No description provided."}</p>
-                </div>
-                <span class="project-tech">Main Language: ${repo.language ? repo.language : "Not specified"}</span>
-            `;
-            container.appendChild(card);
-        });
-    } catch (error) {
-        console.error(error);
-        container.innerHTML = `<p class="feedback-msg" style="color: #e63946;">GitHub data is unavailable.</p>`;
-    }
-}
-
 // Contact Form Validation
 function setupContactForm() {
     const form = document.getElementById("contact-form");
