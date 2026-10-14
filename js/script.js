@@ -1,4 +1,3 @@
-alert("JavaScript is connected!");
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Load Projects from JSON file
     loadProjects();
