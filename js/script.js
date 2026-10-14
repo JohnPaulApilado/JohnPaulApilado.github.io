@@ -81,7 +81,7 @@ async function loadProjects() {
 async function loadRepositories() {
     const repoList = document.getElementById("repo-list");
 
-    if (GITHUB_USERNAME === "yourusername") {
+    if (GITHUB_USERNAME === "JohnPaulApilado") {
         repoList.innerHTML =
             "<p>Set your GitHub username in js/script.js to show your repositories.</p>";
         return;
@@ -89,7 +89,7 @@ async function loadRepositories() {
 
     try {
         const url =
-            `https://api.github.com/users/${encodeURIComponent(GITHUB_USERNAME)}/repos?sort=updated&per_page=5&type=owner`;
+            `https://api.github.com/users/${encodeURIComponent(JohnPaulApilado)}/repos?sort=updated&per_page=5&type=owner`;
 
         const response = await fetch(url);
 
