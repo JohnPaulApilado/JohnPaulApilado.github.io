@@ -5,7 +5,8 @@
     "technologies": "HTML, CSS, JavaScript",
     "role": "Lead Frontend Developer",
     "screenshot": "project1.png",
-    "link": "https://github.com/username/ecommerce-app"
+    "github": "https://github.com/JohnPaulApilado/JohnPaulApilado.github.io",
+"demo":""
   },
   {
     "title": "Task Manager Pro",
@@ -13,7 +14,8 @@
     "technologies": "HTML, JavaScript, Tailwind CSS",
     "role": "Sole Developer",
     "screenshot": "project2.png",
-    "link": "https://github.com/username/task-manager"
+    "github": "https://github.com/JohnPaulApilado/JohnPaulApilado.github.io",
+"demo":""
   },
   {
     "title": "Weather Dashboard",
@@ -21,6 +23,7 @@
     "technologies": "JavaScript, OpenWeather API, CSS",
     "role": "Full Stack Developer",
     "screenshot": "project3.png",
-    "link": "https://github.com/username/weather-dashboard"
+    "github": "https://github.com/JohnPaulApilado/JohnPaulApilado.github.io",
+"demo":""
   }
 ]
