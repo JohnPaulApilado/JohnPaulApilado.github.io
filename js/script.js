@@ -1,175 +1,137 @@
-```javascript
-// Replace with your actual GitHub username.
-const GITHUB_USERNAME = "JohnPaulApilado";
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Load Projects from JSON file
+    loadProjects();
 
-const projectList = document.getElementById("project-list");
-const filter = document.getElementById("technology-filter");
+    // 2. Load GitHub Repositories (Replace 'octocat' with your exact GitHub username)
+    loadGitHubRepos("octocat");
 
-function escapeHTML(value = "") {
-    return String(value).replace(/[&<>"']/g, char => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-    })[char]);
-}
+    // 3. Contact Form Validation & Submission Handling
+    setupContactForm();
 
-// PART C: Load projects from JSON
+    // 4. Back to Top Button Feature
+    setupBackToTop();
+});
+
+// Load Projects from JSON
 async function loadProjects() {
+    const container = document.getElementById("projects-container");
     try {
         const response = await fetch("data/projects.json");
-
-        if (!response.ok) {
-            throw new Error("Projects could not be loaded");
-        }
-
+        if (!response.ok) throw new Error("Failed to load projects data.");
+        
         const projects = await response.json();
+        container.innerHTML = "";
 
-        const technologies = [
-            ...new Set(projects.flatMap(p => p.technologies))
-        ];
-
-        filter.innerHTML =
-            '<option value="all">All Technologies</option>' +
-            technologies.map(t =>
-                `<option value="${escapeHTML(t)}">${escapeHTML(t)}</option>`
-            ).join("");
-
-        function displayProjects() {
-            const selected = filter.value;
-
-            const filtered = projects.filter(project =>
-                selected === "all" ||
-                project.technologies.includes(selected)
-            );
-
-            if (filtered.length === 0) {
-                projectList.innerHTML = "<p>No projects found.</p>";
-                return;
-            }
-
-            projectList.innerHTML = filtered.map(project => `
-                <article class="card">
-                    <h3>${escapeHTML(project.title)}</h3>
-                    <p>${escapeHTML(project.description)}</p>
-                    <p><strong>Technologies:</strong></p>
-                    <div>
-                        ${project.technologies.map(t =>
-                            `<span class="tag">${escapeHTML(t)}</span>`
-                        ).join("")}
-                    </div>
-                    <p><strong>My role:</strong> ${escapeHTML(project.role)}</p>
-                    <p><strong>Screenshot:</strong>
-                    ${escapeHTML(project.screenshot)}</p>
-                    <a class="button" href="${escapeHTML(project.link)}"
-                       target="_blank" rel="noopener">View Project</a>
-                </article>
-            `).join("");
-        }
-
-        filter.addEventListener("change", displayProjects);
-        displayProjects();
-
+        projects.forEach(project => {
+            const card = document.createElement("div");
+            card.className = "project-card";
+            card.innerHTML = `
+                <div>
+                    <h4>${project.title}</h4>
+                    <span class="project-tech">${project.technologies}</span>
+                    <p>${project.description}</p>
+                    <p><strong>Role:</strong> ${project.role}</p>
+                </div>
+                <a href="${project.link}" target="_blank" class="btn" style="margin-top: 1rem; text-align: center;">View Project</a>
+            `;
+            container.appendChild(card);
+        });
     } catch (error) {
-        projectList.innerHTML =
-            "<p>Projects could not be loaded. Check data/projects.json.</p>";
+        console.error(error);
+        container.innerHTML = `<p class="feedback-msg" style="color: #e63946;">Error: Could not load projects at this time.</p>`;
     }
 }
 
-// PART C: Latest five public GitHub repositories
-async function loadRepositories() {
-    const repoList = document.getElementById("repo-list");
-
-    if (GITHUB_USERNAME === "JohnPaulApilado") {
-        repoList.innerHTML =
-            "<p>Set your GitHub username in js/script.js to show your repositories.</p>";
-        return;
-    }
-
+// Fetch Latest GitHub Repositories via REST API
+async function loadGitHubRepos(username) {
+    const container = document.getElementById("github-repos-container");
     try {
-        const url =
-            `https://api.github.com/users/${encodeURIComponent(JohnPaulApilado)}/repos?sort=updated&per_page=5&type=owner`;
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=5`);
+        if (!response.ok) throw new Error("GitHub data unavailable.");
 
-        const response = await fetch(url);
+        const repos = await response.json();
+        container.innerHTML = "";
 
-        if (!response.ok) {
-            throw new Error("GitHub unavailable");
-        }
-
-        const repositories = await response.json();
-
-        if (repositories.length === 0) {
-            repoList.innerHTML = "<p>No public repositories found.</p>";
+        if (repos.length === 0) {
+            container.innerHTML = `<p>No public repositories found.</p>`;
             return;
         }
 
-        repoList.innerHTML = repositories.map(repo => `
-            <article class="card">
-                <h3>${escapeHTML(repo.name)}</h3>
-                <p>${escapeHTML(repo.description || "No description available.")}</p>
-                <p><strong>Main language:</strong>
-                ${escapeHTML(repo.language || "Not specified")}</p>
-                <a class="button" href="${escapeHTML(repo.html_url)}"
-                   target="_blank" rel="noopener">View on GitHub</a>
-            </article>
-        `).join("");
-
+        repos.forEach(repo => {
+            const card = document.createElement("div");
+            card.className = "github-card";
+            card.innerHTML = `
+                <div>
+                    <h4><a href="${repo.html_url}" target="_blank" style="color: var(--accent-color); text-decoration: none;">${repo.name}</a></h4>
+                    <p>${repo.description ? repo.description : "No description provided."}</p>
+                </div>
+                <span class="project-tech">Main Language: ${repo.language ? repo.language : "Not specified"}</span>
+            `;
+            container.appendChild(card);
+        });
     } catch (error) {
-        repoList.innerHTML =
-            "<p>GitHub data is unavailable. Please check your username or try again later.</p>";
+        console.error(error);
+        container.innerHTML = `<p class="feedback-msg" style="color: #e63946;">GitHub data is unavailable.</p>`;
     }
 }
 
-// Mobile navigation
-const menuToggle = document.getElementById("menu-toggle");
-const navLinks = document.getElementById("nav-links");
+// Contact Form Validation
+function setupContactForm() {
+    const form = document.getElementById("contact-form");
+    const feedback = document.getElementById("form-feedback");
 
-menuToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-});
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-navLinks.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        // Reject empty fields
+        if (!name || !email || !message) {
+            feedback.style.color = "#e63946";
+            feedback.textContent = "Please fill in all fields.";
+            return;
+        }
+
+        // Reject invalid email addresses
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            feedback.style.color = "#e63946";
+            feedback.textContent = "Please enter a valid email address.";
+            return;
+        }
+
+        // Show thank-you message
+        feedback.style.color = "#52b788";
+        feedback.textContent = "Thank you! Your message has been sent successfully.";
+        
+        // Clear the form
+        form.reset();
+
+        // Clear feedback message after 5 seconds
+        setTimeout(() => {
+            feedback.textContent = "";
+        }, 5000);
     });
-});
+}
 
-// Contact form validation and thank-you message
-const contactForm = document.getElementById("contact-form");
+// Back to Top Button Feature
+function setupBackToTop() {
+    const btn = document.getElementById("backToTopBtn");
 
-contactForm.addEventListener("submit", event => {
-    event.preventDefault();
-
-    if (!contactForm.reportValidity()) {
-        return;
-    }
-
-    document.getElementById("form-status").textContent =
-        "Thank you! Your form was submitted successfully.";
-
-    contactForm.reset();
-});
-
-// Back to top button
-const backToTop = document.getElementById("back-to-top");
-
-window.addEventListener("scroll", () => {
-    backToTop.classList.toggle("visible", window.scrollY > 300);
-});
-
-backToTop.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
     });
-});
 
-// Current year
-document.getElementById("year").textContent =
-    new Date().getFullYear();
-
-// Start loading data
-loadProjects();
-loadRepositories();
-```
+    btn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+}
