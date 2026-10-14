@@ -1,0 +1,28 @@
+```json
+[
+    {
+        "title": "Personal Portfolio Website",
+        "description": "A responsive website that introduces me and displays my skills.",
+        "technologies": ["HTML", "CSS", "JavaScript"],
+        "role": "Designed and developed the website.",
+        "screenshot": "Portfolio website screenshot",
+        "link": "https://github.com/yourusername/portfolio"
+    },
+    {
+        "title": "Student Grade Calculator",
+        "description": "A calculator that helps students compute their average grades.",
+        "technologies": ["HTML", "CSS", "JavaScript"],
+        "role": "Created the interface and calculation logic.",
+        "screenshot": "Grade calculator screenshot",
+        "link": "https://github.com/yourusername/grade-calculator"
+    },
+    {
+        "title": "Bookstore Database",
+        "description": "A database for books, customers, orders, and staff.",
+        "technologies": ["SQL", "MySQL"],
+        "role": "Designed database tables and relationships.",
+        "screenshot": "Bookstore database screenshot",
+        "link": "https://github.com/yourusername/bookstore-database"
+    }
+]
+```
